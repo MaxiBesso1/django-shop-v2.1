@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%block title%}Borrar categoria{%endblock%}
+{% block content %}
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group border m-3">
+                    <form action="" method="POST" class="m-3">
+                        {% csrf_token %}
+                        <h3><strong>¿Estas seguro que deseas eliminar {{ object.name }}? </strong></h3>
+                        <button type="submit" class="btn btn-lg btn-danger">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

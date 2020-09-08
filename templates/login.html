@@ -1,0 +1,45 @@
+{% extends 'base2.html'%}
+{% block title%}Iniciar sesion{%endblock%}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 img col-sm-0 d-sm-none d-md-block d-none d-lg-block" >
+        <div class="size">
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+        <div class="row m-5">
+            <div class="col-12">
+            </div>
+        </div>
+        <div class="row m-5">
+            <div class="col-12">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="container mt-5">
+                    <div class="container mt-5">
+                        <div class="text-center">
+                            <h2>Bienvenido a DecoDiseño </h2>
+                            <h3>Inicie sesion</h3>
+                        </div>
+                        <form method="post"> 
+                            {% csrf_token %}
+                            {{form.as_table}}
+                            <button type="submit" class="btn btn-block btn-primary">Ingresar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12"></div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+        
+    

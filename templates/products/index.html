@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% block title %}BPM automotores{%endblock%}
+{% block content %}
+{% if bann.status %}
+</div>
+<header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active" style="background-image: url({{bann.banner.url}})">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title }}</strong></h1>
+                    {% if bann.subtitle_1 != "ninguno"%}
+                    <p class="lead" style="color: {{bann.subtitle_color }};">{{ bann.subtitle }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% if bann.status_2 %}
+            <div class="carousel-item" style="background-image: url({{bann.banner_2.url}})">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 style="color: {{bann.title_color_2}};"><strong>{{ bann.title_2 }}</strong></h1>
+                    {% if bann.subtitle_2 != "ninguno"%}
+                    <p class="lead" style="color:{{bann.subtitle_color_2}};">{{ bann.subtitle_2}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+            {% if bann.status_3 %}
+            <div class="carousel-item" style="background-image: url({{bann.banner_3.url}})">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1  style="color: {{bann.title_color_3}};"><strong>{{ bann.title_3 }}</strong></h1>
+                    {% if bann.subtitle_3 != "ninguno"%}
+                    <p class="lead" style="color: {{bann.subtitle_color_3}};">{{ bann.subtitle_3}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</header>
+    
+
+<div class="container-fluid">
+    {% endif %}
+<div class="m-3 z-depth-1">
+  <div class="row">
+    {% if offers %}
+    <div class="col-12">
+        <div class="text-center mt-3">
+        <h3><strong>Nuestras ofertas.</strong></h3>
+        </div>
+    </div>
+    {% for product in offers %}
+    <div class="col-lg-3 col-md-6 mb-4 mx-3">
+        <!-- Card -->
+        <div class="card card-ecommerce mt-2">
+          <!-- Card image -->
+          <div class="view overlay">
+            <img src="{{product.principal_image.url}}" class="img-fluid"
+              style="max-height: 400px;">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mb-1">
+              <strong>
+                <a href="" class="dark-grey-text">{{product.name}}</a>
+              </strong>
+            </h5>
+            <span class="badge badge-danger mb-2">{{product.category}}</span>
+            <div class="card-footer pb-0">
+              <div class="row mb-0">
+                <span class="float-left text-warning">
+                  <strong>${{product.new_price}}</strong>
+                </span>
+                <span class="ml-auto">
+                    <a  href="/productos/{{product.id}}">
+                    <h5>Mas detalles...</h5>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="col-12">
+        <div class="text-center">
+            <h1>No hay productos en oferta</h1>
+        </div>
+    </div>
+    {% endif%}
+</div>
+</div>
+<div class="m-3 z-depth-1">
+  <div class="row">
+    <div class="col-12">
+        <div class="text-center">
+            <div class="h3 mt-2">
+                <strong>
+                    Recomendaciones de la casa...
+                </strong>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    {% for product in products %}
+    <div class="col-lg-3 col-md-6 mb-4 mx-3">
+        <!-- Card -->
+        <div class="card card-ecommerce mt-2">
+          <!-- Card image -->
+          <div class="view overlay">
+            <img src="{{product.principal_image.url}}" class="img-fluid"
+              style="max-height: 250px; width: 100%;">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mb-1">
+              <strong>
+                <a href="" class="dark-grey-text">{{product.name}}</a>
+              </strong>
+            </h5>
+            <span class="badge badge-danger mb-2">{{product.category}}</span>
+            <div class="card-footer pb-0">
+              <div class="row mb-0">
+                {% if product.offer %}
+                  <span class="float-left text-warning">
+                    <strong>${{product.new_price}}</strong>
+                  </span>
+                {% else %}
+                <span class="float-left">
+                    <strong>${{product.price}}</strong>
+                  </span>
+                {% endif %}
+                <span class="ml-auto">
+                  <a  href="/productos/{{product.id}}">
+                    <h5>Mas detalles...</h5>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- Card content -->
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

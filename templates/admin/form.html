@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Añadir producto{% endblock %}
+{%block content %}
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="z-depth-1 m-3 pb-2">
+            <div class="my-3 pt-3 text-center">
+                <h3><strong>Nuevo producto</strong></h3>
+            </div>
+            <div class="container">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_table}}
+                    <div class="my-3">
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+{%endblock%}
