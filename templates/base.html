@@ -83,6 +83,9 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             {% get_categorys as categorys %}
+                            <li class="nav-item active">
+                                <a class="nav-link h4 text-light" href="/c/all/">Todos nuestros productos</a>
+                            </li>
                             {% for x in categorys %}
                             <li class="nav-item active">
                                 <a class="nav-link h4 text-light" href="/c/{{x}}/">{{x}}</a>

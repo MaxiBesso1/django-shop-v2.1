@@ -21,7 +21,7 @@ class A_product(View):
     template_name = "products/product.html"
     model = Product
     def get(self,request,pk,*args,**kwargs):
-        return render(request,self.template_name,{"p":self.model.objects.get(id=pk),"products":sample(list(self.model.objects.all()),2)})
+        return render(request,self.template_name,{"p":self.model.objects.get(id=pk),"products":sample(list(self.model.objects.all()),4)})
 
 class All_product(View):
     template_name = "products/all.html"
@@ -34,14 +34,14 @@ class All_product(View):
                 res=True
         if res:
             products= self.model.objects.filter(category=category)
-            paginator = Paginator(products, per_page=3)
+            paginator = Paginator(products, per_page=12)
             page_number = request.GET.get('page', 1)
             page_obj = paginator.get_page(page_number)
             context = {"products":products,'paginator': paginator,'page_number': int(page_number),"category":category}
 
         elif category == "all":
             products= self.model.objects.all()
-            paginator = Paginator(products, per_page=3)
+            paginator = Paginator(products, per_page=12)
             page_number = request.GET.get('page', 1)
             page_obj = paginator.get_page(page_number)
             context = {"products":products,'paginator': paginator,'page_number': int(page_number),"category":"Nuestros productos"}
