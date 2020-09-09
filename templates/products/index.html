@@ -57,8 +57,10 @@
         <h3><strong>Nuestras ofertas.</strong></h3>
         </div>
     </div>
-    {% for product in offers %}
-    <div class="col-lg-4 col-md-6 mb-4 mx-1">
+    <div class="container">
+      <div class="container">
+        {% for product in offers %}
+    <div class="col-lg-3 col-md-6 mb-4 mx-1">
         <!-- Card -->
         <div class="card card-ecommerce mt-2">
           <!-- Card image -->
@@ -92,6 +94,8 @@
         </div>
     </div>
     {% endfor %}
+      </div>
+    </div>
     {% else %}
     <div class="col-12">
         <div class="text-center">
@@ -114,8 +118,10 @@
     </div>
 </div>
 <div class="row">
-    {% for product in products %}
-    <div class="col-lg-4 col-md-6 mb-4 mx-1">
+    <div class="container">
+      <div class="container">
+        {% for product in products %}
+    <div class="col-lg-3 col-md-6 mb-4 mx-1">
         <!-- Card -->
         <div class="card card-ecommerce mt-2">
           <!-- Card image -->
@@ -158,6 +164,8 @@
       </div>
       <!-- Grid column -->
     {% endfor %}
+      </div>
+    </div>
 </div>
 </div>
 

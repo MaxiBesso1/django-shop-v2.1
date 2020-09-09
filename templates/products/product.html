@@ -157,50 +157,54 @@
       </div>
   </div>
   <div class="row">
-      {% for product in products %}
-      <div class="col-lg-4 col-md-6 mb-4 mx-1">
-          <!-- Card -->
-          <div class="card card-ecommerce mt-2">
-            <!-- Card image -->
-            <div class="view overlay">
-              <img src="{{product.principal_image.url}}" class="img-fluid"
-                alt=""  style="max-height: 250px; width: 100%;">
-              <a>
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title mb-1">
-                <strong>
-                  <a href="" class="dark-grey-text">{{product.name}}</a>
-                </strong>
-              </h5>
-              <span class="badge badge-danger mb-2">{{product.category}}</span>
-              <div class="card-footer pb-0">
-                <div class="row mb-0">
-                {% if product.offer %}
-                  <span class="float-left text-warning">
-                    <strong>${{product.new_price}}</strong>
-                  </span>
-                {% else %}
-                <span class="float-left">
-                    <strong>${{product.price}}</strong>
-                  </span>
-                {% endif %}
-                  <span class="ml-auto">
-                    <a  href="/productos/{{product.id}}">
-                      <h5>Mas detalles...</h5>
+      <div class="container">
+          <div class="container">
+            {% for product in products %}
+            <div class="col-lg-3 col-md-6 mb-4 mx-1">
+                <!-- Card -->
+                <div class="card card-ecommerce mt-2">
+                  <!-- Card image -->
+                  <div class="view overlay">
+                    <img src="{{product.principal_image.url}}" class="img-fluid"
+                      alt=""  style="max-height: 250px; width: 100%;">
+                    <a>
+                      <div class="mask rgba-white-slight"></div>
                     </a>
-                  </span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title mb-1">
+                      <strong>
+                        <a href="" class="dark-grey-text">{{product.name}}</a>
+                      </strong>
+                    </h5>
+                    <span class="badge badge-danger mb-2">{{product.category}}</span>
+                    <div class="card-footer pb-0">
+                      <div class="row mb-0">
+                      {% if product.offer %}
+                        <span class="float-left text-warning">
+                          <strong>${{product.new_price}}</strong>
+                        </span>
+                      {% else %}
+                      <span class="float-left">
+                          <strong>${{product.price}}</strong>
+                        </span>
+                      {% endif %}
+                        <span class="ml-auto">
+                          <a  href="/productos/{{product.id}}">
+                            <h5>Mas detalles...</h5>
+                          </a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Card content -->
                 </div>
+                <!-- Card -->
               </div>
-            </div>
-            <!-- Card content -->
+              <!-- Grid column -->
+            {% endfor %}
           </div>
-          <!-- Card -->
-        </div>
-        <!-- Grid column -->
-      {% endfor %}
+      </div>
   </div>
   </div>
 {% endblock %}
