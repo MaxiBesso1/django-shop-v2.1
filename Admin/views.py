@@ -45,7 +45,8 @@ class Edit_product(SuperUserMixin,UpdateView):
     template_name = "admin/modal.html"
     model = Product
     form_class = Product_form
-    success_url = reverse_lazy("admin",args=("productos",))    
+    success_url = reverse_lazy("admin",args=("productos",))   
+     
 
 class Delete_product(SuperUserMixin,DeleteView):
     model = Product
