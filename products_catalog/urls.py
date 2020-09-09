@@ -15,14 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.shortcuts import HttpResponseRedirect
 from django.conf import settings
 from django.conf.urls.static import static
 from products.urls import urlpatterns as url_products
 from Admin.urls import urls_admin
 
 
+
 urlpatterns = [
     path('admin-django/', admin.site.urls),
+    path("",lambda request: HttpResponseRedirect("/inicio/"))
 ] + url_products + urls_admin + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
