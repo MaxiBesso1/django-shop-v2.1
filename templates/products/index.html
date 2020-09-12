@@ -114,7 +114,9 @@
     </div>
 </div>
 <div class="row">
-    {% for product in products %}
+    <div class="container-fluid">
+      <div class="row">
+        {% for product in products %}
     <div class="col-lg-3 col-md-6 mb-4 mx-1">
         <!-- Card -->
         <div class="card card-ecommerce mt-2">
@@ -158,6 +160,8 @@
       </div>
       <!-- Grid column -->
     {% endfor %}
+      </div>
+    </div>
 </div>
 </div>
 
