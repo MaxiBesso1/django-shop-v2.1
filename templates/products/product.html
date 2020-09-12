@@ -10,14 +10,14 @@
                     <div id="carousel-thumb1" class="carousel slide carousel-fade carousel-thumbnails  bann2"
                         data-ride="carousel">
                         <div class="carousel-inner text-center text-md-left" role="listbox">
-                            <div class="carousel-item active ban-img" style="background-image:url({{p.banner_image1.url}}); width:100%;">
+                            <div class="carousel-item active ban-img" style="background-image:url({{p.banner_image1}}); width:100%;">
                             </div>
                             {% if p.banner_image2 %}
-                            <div class="carousel-item ban-img" style="background-image:url({{p.banner_image2.url}}); width:100%;">
+                            <div class="carousel-item ban-img" style="background-image:url({{p.banner_image2}}); width:100%;">
                             </div>
                             {% endif %}
                             {% if p.banner_image3 %}
-                            <div class="carousel-item ban-img" style="background-image:url({{p.banner_image3.url}}); width:100%;">
+                            <div class="carousel-item ban-img" style="background-image:url({{p.banner_image3}}); width:100%;">
                             </div>
                             {% endif %}
                         </div>
@@ -80,14 +80,14 @@
                 data-ride="carousel">
                 <!--Slides-->
                 <div class="carousel-inner text-center text-md-left bann " role="listbox">
-                    <div class="carousel-item active ban-img" style="background-image:url({{p.banner_image1.url}}); width:100%;">
+                    <div class="carousel-item active ban-img" style="background-image:url({{p.banner_image1}}); width:100%;">
                     </div>
                     {% if p.banner_image2 %}
-                    <div class="carousel-item ban-img" style="background-image:url({{p.banner_image2.url}}); width:100%;">
+                    <div class="carousel-item ban-img" style="background-image:url({{p.banner_image2}}); width:100%;">
                     </div>
                     {% endif %}
                     {% if p.banner_image3 %}
-                    <div class="carousel-item ban-img" style="background-image:url({{p.banner_image3.url}}); width:100%;">
+                    <div class="carousel-item ban-img" style="background-image:url({{p.banner_image3}}); width:100%;">
                     </div>
                     {% endif %}
                 </div>
@@ -157,54 +157,50 @@
       </div>
   </div>
   <div class="row">
-      <div class="container">
-          <div class="container">
-            {% for product in products %}
-            <div class="col-lg-3 col-md-6 mb-4 mx-1">
-                <!-- Card -->
-                <div class="card card-ecommerce mt-2">
-                  <!-- Card image -->
-                  <div class="view overlay">
-                    <img src="{{product.principal_image.url}}" class="img-fluid"
-                      alt=""  style="max-height: 250px; width: 100%;">
-                    <a>
-                      <div class="mask rgba-white-slight"></div>
+      {% for product in products %}
+      <div class="col-lg-3 col-md-6 mb-4 mx-1">
+          <!-- Card -->
+          <div class="card card-ecommerce mt-2">
+            <!-- Card image -->
+            <div class="view overlay">
+              <img src="{{product.principal_image}}" class="img-fluid"
+                alt=""  style="max-height: 250px; width: 100%;">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title mb-1">
+                <strong>
+                  <a href="" class="dark-grey-text">{{product.name}}</a>
+                </strong>
+              </h5>
+              <span class="badge badge-danger mb-2">{{product.category}}</span>
+              <div class="card-footer pb-0">
+                <div class="row mb-0">
+                {% if product.offer %}
+                  <span class="float-left text-warning">
+                    <strong>${{product.new_price}}</strong>
+                  </span>
+                {% else %}
+                <span class="float-left">
+                    <strong>${{product.price}}</strong>
+                  </span>
+                {% endif %}
+                  <span class="ml-auto">
+                    <a  href="/productos/{{product.id}}">
+                      <h5>Mas detalles...</h5>
                     </a>
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title mb-1">
-                      <strong>
-                        <a href="" class="dark-grey-text">{{product.name}}</a>
-                      </strong>
-                    </h5>
-                    <span class="badge badge-danger mb-2">{{product.category}}</span>
-                    <div class="card-footer pb-0">
-                      <div class="row mb-0">
-                      {% if product.offer %}
-                        <span class="float-left text-warning">
-                          <strong>${{product.new_price}}</strong>
-                        </span>
-                      {% else %}
-                      <span class="float-left">
-                          <strong>${{product.price}}</strong>
-                        </span>
-                      {% endif %}
-                        <span class="ml-auto">
-                          <a  href="/productos/{{product.id}}">
-                            <h5>Mas detalles...</h5>
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Card content -->
+                  </span>
                 </div>
-                <!-- Card -->
               </div>
-              <!-- Grid column -->
-            {% endfor %}
+            </div>
+            <!-- Card content -->
           </div>
-      </div>
+          <!-- Card -->
+        </div>
+        <!-- Grid column -->
+      {% endfor %}
   </div>
   </div>
 {% endblock %}

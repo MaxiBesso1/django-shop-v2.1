@@ -1,22 +1,20 @@
 {% extends 'base.html' %}
 {% block title %} Nuestros productos {% endblock %}
 {%block content %}
-<div class="row m-3 z-depth-1">
+<div class="row my-3 mx-1 z-depth-1">
     <div class="col-12">
         <div class="text-center">
         <h3 class="pb-2 border-bottom mt-2"><strong>{{category}}</strong></h3>
         </div>
     </div>
     {% if products != False %}
-    <div class="container">
-      <div class="container">
-        {% for product in products %}
+    {% for product in products %}
     <div class="col-lg-3 col-md-6 mb-4 mx-1">
         <!-- Card -->
         <div class="card card-ecommerce mt-2">
           <!-- Card image -->
           <div class="view overlay">
-            <img src="{{product.principal_image.url}}" class="img-fluid"
+            <img src="{{product.principal_image}}" class="img-fluid"
               style="max-height: 250px; width: 100%;">
             <a>
               <div class="mask rgba-white-slight"></div>
@@ -54,8 +52,6 @@
       </div>
       <!-- Grid column -->
     {% endfor %}
-      </div>
-    </div>
     {%endif%}
 
 </div>

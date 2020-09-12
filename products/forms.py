@@ -19,10 +19,10 @@ class Product_form(forms.ModelForm):
         ,"description":forms.Textarea(attrs={"class":"form-control m-1","placeholder":"Descripcion"})
         ,"category": forms.Select(attrs={"class":"form-control m-1","placeholder":"Categoria"})
         ,"link":forms.TextInput(attrs={"class":"form-control m-1","placeholder":"Link de pago"})
-        ,"principal_image":forms.FileInput(attrs={"class":"form-control m-1","placeholder":"Imagen de cabecera"})
-        ,"banner_image1":forms.FileInput(attrs={"class":"form-control m-1","placeholder":"Imagen de producto 1"})
-        ,"banner_image2":forms.FileInput(attrs={"class":"form-control m-1","placeholder":"Imagen de producto 2"})
-        ,"banner_image3":forms.FileInput(attrs={"class":"form-control m-1","placeholder":"Imagen de producto 3"})
+        ,"principal_image":forms.URLInput(attrs={"class":"form-control m-1","placeholder":"Imagen de cabecera"})
+        ,"banner_image1":forms.URLInput(attrs={"class":"form-control m-1","placeholder":"Imagen de producto 1"})
+        ,"banner_image2":forms.URLInput(attrs={"class":"form-control m-1","placeholder":"Imagen de producto 2"})
+        ,"banner_image3":forms.URLInput(attrs={"class":"form-control m-1","placeholder":"Imagen de producto 3"})
         ,"offer":forms.CheckboxInput(attrs={"class":"form-check-input m-1"})
         ,"new_price":forms.NumberInput(attrs={"class":"form-control m-1","placeholder":"Precio de oferta"})} 
    
