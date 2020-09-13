@@ -6,7 +6,7 @@ from products.models import Product
 from styles.models import Banner1 as Banner
 from products.forms import Product_form
 from styles.forms import Banner_form 
-from .mixins import SuperUserMixin
+from .mixins import SuperUserMixin,AjaxMixin
 from products.templatetags.control import add_category,get_categorys,edit_category,delete_category
 # Create your views here.
 
@@ -41,7 +41,7 @@ class New_product(SuperUserMixin,CreateView):
     form_class = Product_form
     success_url = reverse_lazy("admin",args=("productos",))
 
-class Edit_product(SuperUserMixin,UpdateView):
+class Edit_product(SuperUserMixin,AjaxMixin,UpdateView):
     template_name = "admin/modal.html"
     model = Product
     form_class = Product_form
@@ -52,7 +52,7 @@ class Delete_product(SuperUserMixin,DeleteView):
     model = Product
     success_url = reverse_lazy("admin",args=("productos",))
 
-class Edit_styles(SuperUserMixin,UpdateView):
+class Edit_styles(SuperUserMixin,AjaxMixin,UpdateView):
     template_name = "admin/modal.html"
     model = Banner
     form_class = Banner_form
@@ -66,7 +66,7 @@ class New_category(SuperUserMixin,View):
         add_category(request.POST["category"])
         return HttpResponseRedirect("/admin/categorias")
 
-class Edit_category(SuperUserMixin,View):
+class Edit_category(SuperUserMixin,AjaxMixin,View):
     template_name = "admin/modal1.html"
     category_old = ""
     def get(self,request,category,*args,**kwargs):
