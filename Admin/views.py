@@ -41,7 +41,7 @@ class New_product(SuperUserMixin,CreateView):
     form_class = Product_form
     success_url = reverse_lazy("admin",args=("productos",))
 
-class Edit_product(SuperUserMixin,AjaxMixin,UpdateView):
+class Edit_product(SuperUserMixin,UpdateView):
     template_name = "admin/modal.html"
     model = Product
     form_class = Product_form
@@ -52,8 +52,8 @@ class Delete_product(SuperUserMixin,DeleteView):
     model = Product
     success_url = reverse_lazy("admin",args=("productos",))
 
-class Edit_styles(SuperUserMixin,AjaxMixin,UpdateView):
-    template_name = "admin/modal.html"
+class Edit_styles(SuperUserMixin,UpdateView):
+    template_name = "admin/modal3.html"
     model = Banner
     form_class = Banner_form
     success_url = reverse_lazy("admin",args=("estilos",))  
@@ -66,7 +66,7 @@ class New_category(SuperUserMixin,View):
         add_category(request.POST["category"])
         return HttpResponseRedirect("/admin/categorias")
 
-class Edit_category(SuperUserMixin,AjaxMixin,View):
+class Edit_category(SuperUserMixin,View):
     template_name = "admin/modal1.html"
     category_old = ""
     def get(self,request,category,*args,**kwargs):
