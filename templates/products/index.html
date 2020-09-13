@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}BPM automotores{%endblock%}
+{% block title %}BPM Automotores{%endblock%}
 {% block content %}
 {% if bann.status %}
 </div>
@@ -8,8 +8,10 @@
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active" style="background-image: url({{bann.banner}})">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title }}</strong></h1>
-                    {% if bann.subtitle_1 != "ninguno"%}
+                  {% if bann.title != "ninguno"%}
+                  <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title }}</strong></h1>
+                  {%endif%}
+                  {% if bann.subtitle != "False" %}
                     <p class="lead" style="color: {{bann.subtitle_color }};">{{ bann.subtitle }}</p>
                     {% endif %}
                 </div>
@@ -17,8 +19,10 @@
             {% if bann.status_2 %}
             <div class="carousel-item" style="background-image: url({{bann.banner_2}})">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1 style="color: {{bann.title_color_2}};"><strong>{{ bann.title_2 }}</strong></h1>
-                    {% if bann.subtitle_2 != "ninguno"%}
+                    {% if bann.title_2 != "ninguno"%}
+                    <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title_2 }}</strong></h1>
+                    {%endif%}
+                    {% if bann.subtitle_2 != "False" %}
                     <p class="lead" style="color:{{bann.subtitle_color_2}};">{{ bann.subtitle_2}}</p>
                     {% endif %}
                 </div>
@@ -27,8 +31,10 @@
             {% if bann.status_3 %}
             <div class="carousel-item" style="background-image: url({{bann.banner_3}})">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1  style="color: {{bann.title_color_3}};"><strong>{{ bann.title_3 }}</strong></h1>
-                    {% if bann.subtitle_3 != "ninguno"%}
+                    {% if bann.title_3 != "ninguno"%}
+                    <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title_3 }}</strong></h1>
+                    {%endif%}
+                    {% if bann.subtitle_3 != "False"%}
                     <p class="lead" style="color: {{bann.subtitle_color_3}};">{{ bann.subtitle_3}}</p>
                     {% endif %}
                 </div>
@@ -50,21 +56,24 @@
 <div class="container-fluid">
     {% endif %}
 <div class="m-3 z-depth-1">
-  <div class="row">
-    {% if offers %}
-    <div class="col-12">
-        <div class="text-center mt-3">
-        <h3><strong>Nuestras ofertas.</strong></h3>
-        </div>
+{% if offers %}
+<div class="row">
+  <div class="col-12 mt-3">
+    <div class="text-center">
+      <h3><strong>Nuestras ofertas</strong></h3>
     </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
     {% for product in offers %}
-    <div class="col-lg-3 col-md-6 mb-4 mx-1">
+    <div class="col-lg-3 col-md-6 mb-3 px-2 px-md-4 px-lg-2">
         <!-- Card -->
-        <div class="card card-ecommerce mt-2">
+        <div class="card card-ecommerce mt-2 product">
           <!-- Card image -->
           <div class="view overlay">
             <img src="{{product.principal_image}}" class="img-fluid"
-              style="max-height: 400px;">
+              style="max-height: 250px; width: 100%;">
             <a>
               <div class="mask rgba-white-slight"></div>
             </a>
@@ -78,48 +87,54 @@
             <span class="badge badge-danger mb-2">{{product.category}}</span>
             <div class="card-footer pb-0">
               <div class="row mb-0">
-                <span class="float-left text-warning">
-                  <strong>${{product.new_price}}</strong>
-                </span>
+                  <span class="float-left text-warning">
+                    <strong>${{product.new_price}}</strong>
+                  </span>
                 <span class="ml-auto">
-                    <a  href="/productos/{{product.id}}">
+                  <a  href="/productos/{{product.id}}">
                     <h5>Mas detalles...</h5>
                   </a>
                 </span>
               </div>
             </div>
           </div>
+          <!-- Card content -->
         </div>
-    </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
     {% endfor %}
-    {% else %}
-    <div class="col-12">
-        <div class="text-center">
-            <h1>No hay productos en oferta</h1>
-        </div>
+  </div>
+</div>
+{% else %}
+<div class="row">
+  <div class="col-12">
+    <div class="text-center">
+      <h3><strong>No hay productos en oferta</strong></h3>
     </div>
-    {% endif%}
+  </div>
 </div>
+{% endif %}
 </div>
+
 <div class="m-3 z-depth-1">
   <div class="row">
     <div class="col-12">
-        <div class="text-center">
-            <div class="h3 mt-2">
-                <strong>
-                    Recomendaciones de la casa...
-                </strong>
-            </div>
+      <div class="text-center">
+        <div class="h3 mt-2">
+          <strong>
+            Recomendaciones de la casa...
+          </strong>
         </div>
+      </div>
     </div>
-</div>
-<div class="row">
-    <div class="container-fluid">
-      <div class="row">
-        {% for product in products %}
-    <div class="col-lg-3 col-md-6 mb-4 mx-1">
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      {% for product in products %}
+    <div class="col-lg-3 col-md-6 mb-3 px-2 px-md-4 px-lg-2">
         <!-- Card -->
-        <div class="card card-ecommerce mt-2">
+        <div class="card card-ecommerce mt-2 product">
           <!-- Card image -->
           <div class="view overlay">
             <img src="{{product.principal_image}}" class="img-fluid"
@@ -160,9 +175,17 @@
       </div>
       <!-- Grid column -->
     {% endfor %}
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="float-right">
+          <a href="/c/all" class="btn btn-sm btn-dark">
+            <h5><strong>Ver mas...</strong></h5>
+          </a>
+        </div>
       </div>
     </div>
-</div>
+  </div>
 </div>
 
 {% endblock %}
