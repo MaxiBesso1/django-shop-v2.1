@@ -6,22 +6,26 @@ from django.urls import reverse_lazy
 from .models import Product
 from styles.models import Banner1 as Banner
 from .templatetags.control import get_categorys
+from .extra_utilities import get_range
 
 class Index(View):
     template_name = "products/index.html"
     models = [Product,Banner]
     def get(self,request,*args,**kwargs):
         styles = self.models[1].objects.get(id=1)
-        products = sample(list(self.models[0].objects.filter(offer=False)),8)
+        products = sample(list(self.models[0].objects.filter(offer=False)),1)
         products_offer = self.models[0].objects.filter(offer=True)
         context = {"bann":styles,"products":products,"offers":products_offer}
+        
         return render(request,self.template_name,context)
 
 class A_product(View):
     template_name = "products/product.html"
     model = Product
     def get(self,request,pk,*args,**kwargs):
-        return render(request,self.template_name,{"p":self.model.objects.get(id=pk),"products":sample(list(self.model.objects.all()),4)})
+        product = self.model.objects.get(id=pk)
+        images = get_range(product.banner_images.values())
+        return render(request,self.template_name,{"p":product,"products":sample(list(self.model.objects.all()),4),"images":images})
 
 class All_product(View):
     template_name = "products/all.html"

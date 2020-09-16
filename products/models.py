@@ -1,22 +1,24 @@
 from django.db import models
-from .templatetags.control import get_categorys_as_tuple
+from images.models import Images
 
-CHOICES = get_categorys_as_tuple()
 # Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=251)
+
+    def __str__(self):
+        return self.name
+
 #Product model
 class Product(models.Model):
     name = models.CharField(max_length=150)
     price = models.FloatField()
     description = models.TextField()
-    category = models.CharField(max_length=250,default="Otros",choices=CHOICES)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
     exact_date = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
     date = models.DateField(auto_now=True)
-    link = models.CharField(max_length=291)
-    principal_image = models.URLField()
-    banner_image1 = models.URLField()
-    banner_image2 = models.URLField(blank=True)
-    banner_image3 = models.URLField(blank=True)
+    principal_image = models.ForeignKey(Images,on_delete=models.CASCADE,related_name="fotito")
+    banner_images = models.ManyToManyField(Images,related_name="fotitos")
     offer = models.BooleanField(default=False)
     new_price= models.FloatField(blank=True,null=True)
 

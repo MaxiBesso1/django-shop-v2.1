@@ -6,7 +6,7 @@
 <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active" style="background-image: url({{bann.banner}})">
+            <div class="carousel-item active" style="background-image: url({{bann.banner.url}})">
                 <div class="carousel-caption d-none d-md-block">
                   {% if bann.title != "ninguno"%}
                   <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title }}</strong></h1>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             {% if bann.status_2 %}
-            <div class="carousel-item" style="background-image: url({{bann.banner_2}})">
+            <div class="carousel-item" style="background-image: url({{bann.banner_2.url}})">
                 <div class="carousel-caption d-none d-md-block">
                     {% if bann.title_2 != "ninguno"%}
                     <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title_2 }}</strong></h1>
@@ -29,7 +29,7 @@
             </div>
             {% endif %}
             {% if bann.status_3 %}
-            <div class="carousel-item" style="background-image: url({{bann.banner_3}})">
+            <div class="carousel-item" style="background-image: url({{bann.banner_3.url}})">
                 <div class="carousel-caption d-none d-md-block">
                     {% if bann.title_3 != "ninguno"%}
                     <h1 style="color: {{bann.title_color }};"><strong>{{ bann.title_3 }}</strong></h1>
@@ -72,11 +72,12 @@
         <div class="card card-ecommerce mt-2 product">
           <!-- Card image -->
           <div class="view overlay">
-            <img src="{{product.principal_image}}" class="img-fluid"
-              style="max-height: 250px; width: 100%;">
+            <img src="{{product.principal_image.url}}" class="img-fluid"
+              style="max-height: 250px; width: 100%;" alt="{{product.name}}">
             <a>
               <div class="mask rgba-white-slight"></div>
             </a>
+            
           </div>
           <div class="card-body">
             <h5 class="card-title mb-1">
@@ -137,7 +138,7 @@
         <div class="card card-ecommerce mt-2 product">
           <!-- Card image -->
           <div class="view overlay">
-            <img src="{{product.principal_image}}" class="img-fluid"
+            <img src="{{product.principal_image.url}}" class="img-fluid"
               style="max-height: 250px; width: 100%;">
             <a>
               <div class="mask rgba-white-slight"></div>

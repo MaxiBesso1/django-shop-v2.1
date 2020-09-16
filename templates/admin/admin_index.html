@@ -46,6 +46,13 @@
         </div>
     </div>
 </div>
+<div class="row">
+  <div class="col-12">
+    <div class="float-right">
+      <a href="/admin/imagenes" class="btn btn-lg btn-secondary text-center white-text p-2">Imagenes</a>
+    </div>
+  </div>
+</div>
 {% if name|lower == "productos" %}
 <div class="row">
     <div class="col-1 col-md-2"></div>
@@ -189,7 +196,7 @@
             <h4 class="d-inline"><strong>{{name}}</strong>
             </h4>
             <div class="float-right">
-                <a href="/nueva/categoria" class="btn btn-primary">Nueva</a>
+                <a href="/nuevo/categoria" class="btn btn-primary">Nueva</a>
             </div>
         </div>
         <div class="table-responsive">
@@ -203,12 +210,45 @@
               <tbody>
                 {% for x in objects %}
                 <tr>
-                    <th scope="row">{{x}}</th>
+                    <th scope="row">{{x.name}}</th>
                     <th scope="row">
-                      <button type="button" class="btn btn-primary btn-rounded" onclick="openModal1('{{x}}',2)">Editar</button>
-                      <button type="button" class="btn btn-danger btn-rounded" onclick="openModal1('{{x}}',1)">Eliminar</button>
+                      <button type="button" class="btn btn-primary btn-rounded" onclick="openModal1('{{x.id}}',2)">Editar</button>
+                      <button type="button" class="btn btn-danger btn-rounded" onclick="openModal1('{{x.id}}',1)">Eliminar</button>
 
                     </th>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    </div>
+    <div class="col-1 col-md-3"></div>
+</div>
+{%endif %}
+{% if name|lower == "imagenes" %}
+<div class="row">
+    <div class="col-1 col-md-3"></div>
+    <div class="col-10 col-md-6">
+        <div class="container">
+            <h4 class="d-inline"><strong>{{name}}</strong>
+            </h4>
+            <div class="float-right">
+                <a href="/nuevo/imagen" class="btn btn-primary">Nueva</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">URL</th> 
+                </tr>
+              </thead>
+              <tbody>
+                {% for x in objects %}
+                <tr>
+                    <th scope="row">{{x.name}}</th>
+                    <th scope="row">{{x.url}}</th>
                 </tr>
                 {% endfor %}
               </tbody>

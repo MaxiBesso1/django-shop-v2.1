@@ -10,16 +10,11 @@
                     <div id="carousel-thumb1" class="carousel slide carousel-fade carousel-thumbnails  bann2"
                         data-ride="carousel">
                         <div class="carousel-inner text-center text-md-left" role="listbox">
-                            <div class="carousel-item active ban-img" style="background-image:url({{p.banner_image1}}); width:100%;">
+                            {%for image in images %}
+                            <div class="carousel-item {% if image.id == 1 %} active {%endif%}" style=" width:100%;">
+                              <img src="{{image.url}}" class="ban-img" alt="{{p.name}}">
                             </div>
-                            {% if p.banner_image2 %}
-                            <div class="carousel-item ban-img" style="background-image:url({{p.banner_image2}}); width:100%;">
-                            </div>
-                            {% endif %}
-                            {% if p.banner_image3 %}
-                            <div class="carousel-item ban-img" style="background-image:url({{p.banner_image3}}); width:100%;">
-                            </div>
-                            {% endif %}
+                            {%endfor%}
                         </div>
                         <a class="carousel-control-prev" href="#carousel-thumb1" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -79,18 +74,13 @@
             <div id="carousel-thumb1" class="carousel slide carousel-fade carousel-thumbnails mb-3 pb-4"
                 data-ride="carousel">
                 <!--Slides-->
-                <div class="carousel-inner text-center text-md-left bann " role="listbox">
-                    <div class="carousel-item active ban-img" style="background-image:url({{p.banner_image1}}); width:100%;">
+                  <div class="carousel-inner text-center text-md-left" role="listbox">
+                    {%for image in images %}
+                    <div class="carousel-item {% if image.id == 1 %} active {%endif%}" style=" width:100%;">
+                      <img src="{{image.url}}" class="ban-img" alt="{{p.name}}">
                     </div>
-                    {% if p.banner_image2 %}
-                    <div class="carousel-item ban-img" style="background-image:url({{p.banner_image2}}); width:100%;">
-                    </div>
-                    {% endif %}
-                    {% if p.banner_image3 %}
-                    <div class="carousel-item ban-img" style="background-image:url({{p.banner_image3}}); width:100%;">
-                    </div>
-                    {% endif %}
-                </div>
+                    {%endfor%}
+                  </div>
                 <!--/.Slides-->
                 <!--Thumbnails-->
                 <a class="carousel-control-prev" href="#carousel-thumb1" role="button" data-slide="prev">
@@ -164,7 +154,7 @@
           <div class="card card-ecommerce mt-2 product">
             <!-- Card image -->
             <div class="view overlay">
-              <img src="{{product.principal_image}}" class="img-fluid"
+              <img src="{{product.principal_image.url}}" class="img-fluid"
                 style="max-height: 250px; width: 100%;">
               <a>
                 <div class="mask rgba-white-slight"></div>

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#oo8r*6o$198u^*=+ck@7@p595#%q8^v*f-kvc6ke%0ynvqp)('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',"styles",
+    'django.contrib.staticfiles',"images","styles",
     "products","Admin"
 ]
 
@@ -147,4 +147,4 @@ LOGOUT_REDIRECT_URL = reverse_lazy("index")
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-FILE_TXT = os.path.join(BASE_DIR,"categorys.txt")
+DIR_IMAGES = "C:\\Users\\Maxi Besso\\Desktop\\Programacion\\python-djangoo\\repository-images"

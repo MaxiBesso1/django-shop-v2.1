@@ -24,10 +24,10 @@ class Banner_form(forms.ModelForm):
             "subtitle_color_2":forms.TextInput(attrs={"class":"form-control my-2","placeholder":"Color del subtitulo 2 (CODIGO CON #)"}),
             "subtitle_3":forms.TextInput(attrs={"class":"form-control my-2","placeholder":"Subtitulo del banner 3"}),
             "subtitle_color_3":forms.TextInput(attrs={"class":"form-control my-2","placeholder":"Color del subtitulo 3 (CODIGO CON #)"}),
-            "banner":forms.URLInput(attrs={"class":"form-control my-1","placeholder":"Imagen del banner (GRANDE)"}),
-            "banner_2":forms.URLInput(attrs={"class":"form-control my-1","placeholder":"Imagen del banner 2 (GRANDE)"}),
-            "banner_3":forms.URLInput(attrs={"class":"form-control my-1","placeholder":"Imagen del banner 3 (GRANDE)"}),
+            "banner":forms.Select(attrs={"class":"form-control my-1","placeholder":"Imagen del banner (GRANDE)"}),
+            "banner_2":forms.Select(attrs={"class":"form-control my-1","placeholder":"Imagen del banner 2 (GRANDE)"}),
+            "banner_3":forms.Select(attrs={"class":"form-control my-1","placeholder":"Imagen del banner 3 (GRANDE)"}),
             "status":forms.CheckboxInput(attrs={"class":"form-control my-1"}),
             "status_2":forms.CheckboxInput(attrs={"class":"form-control my-1"}),
             "status_3":forms.CheckboxInput(attrs={"class":"form-control my-1"}),
-            "login_image":forms.URLInput(attrs={"class":"form-control my-1","placeholder":"Imagen del inicio de sesion"})}
+            "login_image":forms.Select(attrs={"class":"form-control my-1","placeholder":"Imagen del inicio de sesion"})}
