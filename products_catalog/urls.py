@@ -20,12 +20,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from products.urls import urlpatterns as url_products
 from Admin.urls import urls_admin
-
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
     path('admin-django/', admin.site.urls),
-    path("",lambda request: HttpResponseRedirect("/inicio/"))
+    path("",lambda request: HttpResponseRedirect("/inicio/")),
+    path("como_comprar/",TemplateView.as_view(template_name="how_buy.html")),
+    path("sobre_nos/",TemplateView.as_view(template_name="about.html"))
+
 ] + url_products + urls_admin + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

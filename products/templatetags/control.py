@@ -8,7 +8,7 @@ def get_categorys():
         categorys = Category.objects.all()
         categorys_list = []
         for x in categorys:
-            categorys_list.append(x.name)
+            categorys_list.append({"id":x.id,"name":x.name})
         return categorys_list
     except:
         return ["categoria 1","categoria 2","categoria 3"]

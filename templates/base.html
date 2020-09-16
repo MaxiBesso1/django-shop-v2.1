@@ -96,7 +96,7 @@
                             </li>
                             {% for x in categorys %}
                             <li class="nav-item active">
-                                <a class="nav-link h4 text-light" href="/c/{{x}}/">{{x}}</a>
+                                <a class="nav-link h4 text-light" href="/c/{{x.name}}/">{{x.name}}</a>
                             </li>
                             {% endfor %}
 
@@ -115,7 +115,8 @@
                             <h5 class=" m-2 d-block text-light"><strong>{{ user.username }}</strong></h5>
                             <a href="/salir/" class="d-block h6 text-light m-2">Cerrar sesion</a>
                         {% endif %}
-                        <a href="/sobreNos/" class="d-block h6 text-light m-2">Quienes somos?</a>
+                        <a href="/como_comprar/" class="d-block h6 text-light m-2">¿Como comprar?</a>
+                        <a href="/sobre_nos/" class="d-block h6 text-light m-2">¿Quienes somos?</a>
                         <a href="/contacto/" class="d-block h6 text-light m-2">Contactenos</a>
                         {% if user.is_staff %}
                         <a href="/admin/productos" class="text-light h6 m-2">Admin</a>

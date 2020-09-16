@@ -14,6 +14,7 @@ urls_admin = [
     path("editar/categoria/<int:pk>",v.Edit_category.as_view()),
     path("borrar/producto/<int:pk>",v.Delete_product.as_view()),
     path("borrar/categoria/<int:pk>",v.Delete_category.as_view()),
+    path("iniciar/estilos",v.Init_styles.as_view()),
     path("accounts/profile/",LoginView.as_view(template_name="login.html",form_class=UserLoginForm,extra_context = {"image":get_image()}),name="login"),
     path("salir/",LogoutView.as_view()),
 

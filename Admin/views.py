@@ -91,3 +91,8 @@ class New_image(SuperUserMixin,CreateView):
         final_image.save()
         return HttpResponseRedirect("/admin/imagenes")
 
+class Init_styles(SuperUserMixin,CreateView):
+    template_name = "admin/form.html"
+    model = Banner
+    form_class = Banner_form
+    success_url = reverse_lazy("admin",args=("estilos",))

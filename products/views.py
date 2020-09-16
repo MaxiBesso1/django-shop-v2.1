@@ -13,7 +13,7 @@ class Index(View):
     models = [Product,Banner]
     def get(self,request,*args,**kwargs):
         styles = self.models[1].objects.get(id=1)
-        products = sample(list(self.models[0].objects.filter(offer=False)),1)
+        products = sample(list(self.models[0].objects.filter(offer=False)),2)
         products_offer = self.models[0].objects.filter(offer=True)
         context = {"bann":styles,"products":products,"offers":products_offer}
         
@@ -32,12 +32,14 @@ class All_product(View):
     model = Product
     extra_data = get_categorys()
     def get(self,request,category,*args,**kwargs):
+        ct = {}
         res = False
         for x in self.extra_data:
-            if x == category:
+            if x["name"] == category:
                 res=True
+                ct = x
         if res:
-            products= self.model.objects.filter(category=category)
+            products= self.model.objects.filter(category=ct["id"])
             paginator = Paginator(products, per_page=12)
             page_number = request.GET.get('page', 1)
             page_obj = paginator.get_page(page_number)
@@ -50,7 +52,7 @@ class All_product(View):
             page_obj = paginator.get_page(page_number)
             context = {"products":products,'paginator': paginator,'page_number': int(page_number),"category":"Nuestros productos"}
         else:
-            context = {"products":False}
+            return HttpResponseRedirect("/")
         return render(request,self.template_name,context)
 
 
