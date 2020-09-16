@@ -13,7 +13,7 @@ class Index(View):
     models = [Product,Banner]
     def get(self,request,*args,**kwargs):
         styles = self.models[1].objects.get(id=1)
-        products = sample(list(self.models[0].objects.filter(offer=False)),2)
+        products = sample(list(self.models[0].objects.filter(offer=False)),8)
         products_offer = self.models[0].objects.filter(offer=True)
         context = {"bann":styles,"products":products,"offers":products_offer}
         
